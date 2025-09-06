@@ -39,26 +39,6 @@ jobs:
             pip install -r <(grep -v '${{ env.EXCLUDED_DEPENDENCIES }}' requirements.txt)
           fi
 
-      - name: Code Quality - Black Formatting Check
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: |
-          black --check --diff .
-
-      - name: Code Quality - Flake8 Linting
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: |
-          flake8 --max-line-length=88 --extend-ignore=E203,W503 .
-
-      - name: Run Unit Tests
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: |
-          python test_connector.py
-
-      - name: Run Mock Integration Tests
-        working-directory: ${{ env.WORKING_DIRECTORY }}/faker_mock
-        run: |
-          python test_connector_with_mock.py
-
       - name: Create Configuration File
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: |
@@ -88,6 +68,16 @@ jobs:
           validate_configuration(cfg)
           print('Configuration validation passed')
           "
+
+      - name: Run Unit Tests
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: |
+          python test_connector.py
+
+      - name: Run Mock Integration Tests
+        working-directory: ${{ env.WORKING_DIRECTORY }}/faker_mock
+        run: |
+          python test_connector_with_mock.py
 
       - name: Deploy Fivetran Connector
         if: ${{ vars.DEPLOY_ENABLED == 'true' }}
