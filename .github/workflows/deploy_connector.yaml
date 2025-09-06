@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   test-and-deploy-fivetran-connector:
@@ -85,4 +86,3 @@ jobs:
           echo "Deploying ${{ env.CONNECTOR_NAME }} connector"
           fivetran deploy --api-key $FIVETRAN_API_KEY --destination $FIVETRAN_DESTINATION --connection $FIVETRAN_CONNECTION --configuration ${{ env.CONFIG_FILE }} --python-version ${{ env.PYTHON_VERSION }} --force
           echo "Successfully deployed ${{ env.CONNECTOR_NAME }} connector"
-
