@@ -1,0 +1,16 @@
+{
+  "client_id": "YOUR_CLIENT_ID",
+  "client_secret": "YOUR_CLIENT_SECRET",
+  "refresh_token": "YOUR_REFRESH_TOKEN",
+  "adform_base_url": "https://api.adform.com",
+  "initial_sync_days": "90",
+  "page_size": "100",
+  "request_timeout_seconds": "30",
+  "retry_attempts": "3",
+  "enable_incremental_sync": "true",
+  "enable_campaigns_sync": "true",
+  "enable_lineitems_sync": "true",
+  "enable_creatives_sync": "true",
+  "enable_debug_logging": "false",
+  "use_mock": "true"
+}
