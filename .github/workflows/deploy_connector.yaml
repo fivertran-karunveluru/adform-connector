@@ -12,7 +12,7 @@ jobs:
 
     env:
       PYTHON_VERSION: '3.11'
-      WORKING_DIRECTORY: 'connections/csdk/adform-connector'
+      WORKING_DIRECTORY: '${{ github.workspace }}'
       CONNECTOR_NAME: 'Adform'
       CONFIG_FILE: 'configuration.json'
       EXCLUDED_DEPENDENCIES: '^requests\\b'
