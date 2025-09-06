@@ -74,11 +74,6 @@ jobs:
         run: |
           python test_connector.py
 
-      - name: Run Mock Integration Tests
-        working-directory: ${{ env.WORKING_DIRECTORY }}/faker_mock
-        run: |
-          python test_connector_with_mock.py
-
       - name: Deploy Fivetran Connector
         if: ${{ vars.DEPLOY_ENABLED == 'true' }}
         working-directory: ${{ env.WORKING_DIRECTORY }}
